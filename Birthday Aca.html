@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD Acayangg! 🎂</title>
+    <style>
+        body {
+            background-color: #fff0f5;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            z-index: 10;
+            position: relative;
+            border: 4px dashed #ffb6c1;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .header-text {
+            font-size: 0.9rem;
+            color: #ff69b4;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile-pic-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 15px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid #ff69b4;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            animation: slowBob 4s infinite ease-in-out;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes slowBob {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+
+        h1 {
+            color: #ff1493;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .name-highlight {
+            display: block;
+            font-size: 1.7rem;
+            color: #ff69b4;
+            font-weight: 900;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        /* Animasi Jatuh Pelan (Love & Pita) */
+        .falling-element {
+            position: absolute;
+            top: -50px;
+            z-index: 5;
+            user-select: none;
+            pointer-events: none;
+            /* Animasi jatuh yang lebih lambat */
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        #secret-content {
+            display: none;
+            margin-top: 20px;
+            background: #fffafa;
+            padding: 15px;
+            border-radius: 20px;
+            border: 2px solid #ffb6c1;
+            animation: fadeInUp 0.8s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header-text">
+            From: Ontii Pita ❤️ To: Acayangg
+        </div>
+
+        <div class="profile-pic-container">
+            <img src="Foto Aca 1.jpeg" alt="Almahyra Arrasya Putri" class="profile-pic">
+        </div>
+
+        <h1>Happy Birthday,<br><span class="name-highlight">Almahyra Arrasya Putri!</span></h1>
+        
+        <button class="btn" onclick="startParty()">Geserr disinii hehe! ✨</button>
+        
+        <div id="secret-content">
+            <h2 style="color: #ff1493; margin-bottom: 5px;">Hepii Besdeyy kesayangan ontii pita! 🥳</h2>
+            <p>Semoga panjang umur, sehat selalu, makin pinter, jadi anak yang sholehah dann menjadi anak yang selalu berbakti kepada orang tuanya</p>
+            <p>Peluk cium dari Ontii Pita! 💋🎀</p>
+            <p style="font-size: 1.8rem;">🎁🎈🍰</p>
+        </div>
+    </div>
+
+    <script>
+        function startParty() {
+            document.getElementById('secret-content').style.display = 'block';
+            document.querySelector('.btn').style.display = 'none';
+
+            // Jumlah elemen dikurangi (hanya 30 elemen)
+            // Jeda antar elemen ditambah agar tidak muncul sekaligus (numpuk)
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createElement, i * 300); 
+            }
+        }
+
+        function createElement() {
+            const el = document.createElement('div');
+            el.className = 'falling-element';
+            
+            const types = ['❤️', '🎀', '🌸', '💖'];
+            el.innerText = types[Math.floor(Math.random() * types.length)];
+            
+            el.style.fontSize = Math.random() * 15 + 15 + 'px';
+            el.style.left = Math.random() * 95 + 'vw';
+            
+            // Durasi jatuh dibuat lebih lama (6 - 9 detik) agar lambat
+            const duration = Math.random() * 3 + 6;
+            el.style.animationDuration = duration + 's';
+            
+            el.style.opacity = Math.random() * 0.4 + 0.6;
+
+            document.body.appendChild(el);
+
+            // Hapus elemen setelah benar-benar hilang dari layar
+            setTimeout(() => { el.remove(); }, duration * 1000);
+        }
+    </script>
+</body>
+</html>
